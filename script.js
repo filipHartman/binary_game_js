@@ -1,37 +1,47 @@
-let buttons = document.querySelectorAll('.button');
+const gameArea = document.querySelector("#game");
+const form = document.querySelector("#numberSelectionForm");
 
 function prepareGame(numberOfBulbs) {
-    let gameContainer = document.getElementById('game');
-    let htmlToCreateBulbs = '<div id="bulbsContainer">';
-    let htmlToCreateButtons = '<div id="buttonsContainer">';
 
     for (let i = numberOfBulbs - 1; i >= 0; i--) {
-        let bulbId = 'bulb' + i;
-        let buttonId = 'button' + i;
-        htmlToCreateBulbs += '<span class="bulb" id="' + bulbId + '"></span>';
-        htmlToCreateButtons += '<span class="button" id="' + buttonId + '" onclick="changeColorOfBulb('+ bulbId + ')"></span>';
+        createBulb();
     }
-
-    htmlToCreateBulbs +='</div>';
-    htmlToCreateButtons +='</div>';
-
-    gameContainer.innerHTML= htmlToCreateBulbs + htmlToCreateButtons;
-
 }
-function changeColorOfBulb(bulbId) {
-    console.log(bulbId.innerHTML);
-    console.log(bulbId.style.backgroundColor === 'red');
-    // let bulb = document.getElementById(bulbId);
-    if (bulbId.style.backgroundColor === 'red') {
-        bulbId.style.backgroundColor = 'green';
-    } else {
-        bulbId.style.backgroundColor = 'red';
+
+
+function changeColorOfBulb() {
+   this.parentNode.classList.toggle("clicked")
+}
+
+function getNumbersOfBulbsFromForm() {
+    let numberOfBulbs = 0;
+    for (let i = 0; i < form.length; i++) {
+        if (form[i].checked) {
+            numberOfBulbs = form[i].value
+        }
     }
+    return numberOfBulbs;
 }
 
 function startGame() {
-    let numberOfBulbs = document.querySelector('input[name="numberOfBulbs"]:checked').value;
+   let numberOfBulbs = getNumbersOfBulbsFromForm();
     document.getElementById("startGamePanel").style.display = 'none';
+
     prepareGame(numberOfBulbs);
 }
-// prepareGame(4);
+
+function createBulb(){
+   const bulb =  document.createElement("div");
+    bulb.classList.add("bulb");
+    const btn = createButton();
+    bulb.appendChild(btn);
+    gameArea.appendChild(bulb);
+}
+
+
+function createButton(){
+    const button = document.createElement("div");
+    button.classList.add("button");
+    button.onclick = changeColorOfBulb;
+    return button
+}

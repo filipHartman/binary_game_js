@@ -45,3 +45,7 @@
     margin-right: 17px;
     cursor: pointer;
 }
+
+.clicked{
+    background-color: green;
+}
