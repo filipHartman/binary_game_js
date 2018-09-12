@@ -4,14 +4,24 @@ const form = document.querySelector("#numberSelectionForm");
 function prepareGame(numberOfBulbs) {
     let generatedRandomNumberToConvert = generateRandomNumber(numberOfBulbs);
     console.log(generatedRandomNumberToConvert);
+    createPanelWithGeneratedNumber(generatedRandomNumberToConvert);
     for (let i = numberOfBulbs - 1; i >= 0; i--) {
-        createBulb();
+        createBulb(i);
     }
 }
 
+function createPanelWithGeneratedNumber(generatedNumber) {
+    const panel = document.createElement("div");
+    panel.classList.add("generatedNumberPanel");
+    const panelText = document.createElement("label");
+    panelText.innerText = "Decimal number: " + generatedNumber;
+    panel.appendChild(panelText);
+    gameArea.appendChild(panel);
+}
 
 function changeColorOfBulb() {
-   this.parentNode.classList.toggle("clicked")
+   this.parentNode.classList.toggle("clicked");
+
 }
 
 function getNumbersOfBulbsFromForm() {
@@ -35,9 +45,10 @@ function generateRandomNumber(numberOfBulbs) {
     return Math.floor(Math.random() * Math.pow(2, numberOfBulbs - 1) + 1);
 }
 
-function createBulb(){
-   const bulb =  document.createElement("div");
+function createBulb(value){
+    const bulb =  document.createElement("div");
     bulb.classList.add("bulb");
+    bulb.setAttribute("value", ""+Math.pow(2, value));
     const btn = createButton();
     bulb.appendChild(btn);
     gameArea.appendChild(bulb);
