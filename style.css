@@ -1,39 +1,35 @@
 #startGamePanel {
-    position: absolute;
     height: 200px;
     width: 320px;
-    left: 50%;
     text-align: center;
-    margin-left: -155px;
-    top: 50px;
     border: black 5px solid;
     border-radius: 5px;
+    margin: 50px auto auto;
 }
 
 .bulb{
     display: inline-block;
+    text-align: center;
 }
 
 .far {
     color: red;
-  font-size: 50px;
-    border-radius: 50%;
-    margin: 10px;
+    font-size: 50px;
+    margin: 16px;
     display: block !important;
 }
 
 #game{
-    position: absolute;
-    left: 50%;
-    margin-left: -155px;
-    top: 50px;
+    text-align: center;
+    margin-top: 50px;
 }
 
 .button {
     height: 30px;
-    width: 30px;
+    width: 50px;
     background-color: greenyellow;
     border: black 2px solid;
+    border-radius: 12px;
     display: inline-block;
     margin-top: 10px;
     margin-left: 17px;
@@ -41,6 +37,6 @@
     cursor: pointer;
 }
 
-.clicked{
+.alight{
     color: green;
 }
