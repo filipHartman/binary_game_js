@@ -3,7 +3,6 @@ const form = document.querySelector("#numberSelectionForm");
 
 function prepareGame(numberOfBulbs) {
     let generatedRandomNumberToConvert = generateRandomNumber(numberOfBulbs);
-    console.log(generatedRandomNumberToConvert);
     createPanelWithGeneratedNumber(generatedRandomNumberToConvert);
     for (let i = numberOfBulbs - 1; i >= 0; i--) {
         createBulb(i);
@@ -14,13 +13,27 @@ function createPanelWithGeneratedNumber(generatedNumber) {
     const panel = document.createElement("div");
     panel.classList.add("generatedNumberPanel");
     const panelText = document.createElement("label");
+    panelText.setAttribute("id", "generatedNumber");
+    panelText.setAttribute("value", generatedNumber);
     panelText.innerText = "Decimal number: " + generatedNumber;
     panel.appendChild(panelText);
     gameArea.appendChild(panel);
 }
 
 function changeColorOfBulb() {
-    this.parentNode.firstChild.classList.toggle("clicked")
+    this.parentNode.firstChild.classList.toggle("clicked");
+    let decimalNumberToGuess = document.getElementById("generatedNumber").getAttribute("value");
+    console.log(decimalNumberToGuess);
+    let bulbs = document.querySelectorAll(".bulb");
+    let sum = 0;
+    for(let bulb of bulbs) {
+        if ( bulb.firstChild.className  === "far fa-lightbulb clicked") {
+            sum += +bulb.getAttribute("value");
+        }
+    }
+    if(sum === +decimalNumberToGuess) {
+        console.log("got it");
+    }
 }
 
 function getNumbersOfBulbsFromForm() {
@@ -36,7 +49,6 @@ function getNumbersOfBulbsFromForm() {
 function startGame() {
     let numberOfBulbs = getNumbersOfBulbsFromForm();
     document.getElementById("startGamePanel").style.display = 'none';
-
     prepareGame(numberOfBulbs);
 }
 
