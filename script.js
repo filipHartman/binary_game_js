@@ -23,11 +23,12 @@ function createPanelWithGeneratedNumber(generatedNumber) {
 function changeColorOfBulb() {
     this.parentNode.firstChild.classList.toggle("alight");
     let decimalNumberToGuess = document.getElementById("generatedNumber").getAttribute("value");
-    console.log(decimalNumberToGuess);
     let bulbs = document.querySelectorAll(".bulb");
     let sum = 0;
+    let switchImg = this.firstChild;
+    changeSwitchImg(switchImg);
     for(let bulb of bulbs) {
-        if ( bulb.firstChild.className  === "far fa-lightbulb clicked") {
+        if ( bulb.firstChild.className  === "far fa-lightbulb alight") {
             sum += +bulb.getAttribute("value");
         }
     }
@@ -70,8 +71,21 @@ function createBulb(value){
 }
 
 function createButton(){
+    const img = document.createElement("img");
+    img.setAttribute("src", "off-btn.png");
     const button = document.createElement("div");
     button.classList.add("button");
+    button.appendChild(img);
     button.onclick = changeColorOfBulb;
     return button
+}
+function changeSwitchImg(button) {
+    if(button.getAttribute("src") === "off-btn.png"){
+        button.setAttribute("src", "on-btn.png");
+    }else {
+        button.setAttribute("src", "off-btn.png");
+
+    }
+
+
 }
