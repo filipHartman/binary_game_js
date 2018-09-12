@@ -2,7 +2,7 @@ const gameArea = document.querySelector("#game");
 const form = document.querySelector("#numberSelectionForm");
 
 function prepareGame(numberOfBulbs) {
-
+    let generatedRandomNumberToConvert = generateRandomNumber(numberOfBulbs);
     for (let i = numberOfBulbs - 1; i >= 0; i--) {
         createBulb();
     }
@@ -24,10 +24,14 @@ function getNumbersOfBulbsFromForm() {
 }
 
 function startGame() {
-   let numberOfBulbs = getNumbersOfBulbsFromForm();
+    let numberOfBulbs = getNumbersOfBulbsFromForm();
     document.getElementById("startGamePanel").style.display = 'none';
 
     prepareGame(numberOfBulbs);
+}
+
+function generateRandomNumber(numberOfBulbs) {
+    return Math.floor(Math.random() * numberOfBulbs);
 }
 
 function createBulb(){
