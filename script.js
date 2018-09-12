@@ -21,7 +21,7 @@ function createPanelWithGeneratedNumber(generatedNumber) {
 }
 
 function changeColorOfBulb() {
-    this.parentNode.firstChild.classList.toggle("clicked");
+    this.parentNode.firstChild.classList.toggle("alight");
     let decimalNumberToGuess = document.getElementById("generatedNumber").getAttribute("value");
     console.log(decimalNumberToGuess);
     let bulbs = document.querySelectorAll(".bulb");
@@ -34,6 +34,7 @@ function changeColorOfBulb() {
     if(sum === +decimalNumberToGuess) {
         console.log("got it");
     }
+
 }
 
 function getNumbersOfBulbsFromForm() {
@@ -67,7 +68,6 @@ function createBulb(value){
     bulb.appendChild(btn);
     gameArea.appendChild(bulb);
 }
-
 
 function createButton(){
     const button = document.createElement("div");
