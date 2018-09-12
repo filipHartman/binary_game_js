@@ -27,7 +27,7 @@ function changeColorOfBulb() {
     let bulbs = document.querySelectorAll(".bulb");
     let sum = 0;
     for(let bulb of bulbs) {
-        if ( bulb.firstChild.className  === "far fa-lightbulb clicked") {
+        if ( bulb.firstChild.className  === "far fa-lightbulb alight") {
             sum += +bulb.getAttribute("value");
         }
     }
@@ -57,15 +57,33 @@ function generateRandomNumber(numberOfBulbs) {
     return Math.floor(Math.random() * Math.pow(2, numberOfBulbs - 1) + 1);
 }
 
-function createBulb(value){
-    const bulb =  document.createElement("div");
+function createBulbSymbol(bulb) {
     const iTag = document.createElement("i");
     iTag.classList.add("far", "fa-lightbulb");
     bulb.appendChild(iTag);
-    bulb.classList.add("bulb");
-    bulb.setAttribute("value", ""+Math.pow(2, value));
-    const btn = createButton();
+}
+
+function createBulbButton(bulbValue, bulb) {
+    const btn = createButton(bulbValue);
     bulb.appendChild(btn);
+}
+
+function createBulbValueText(bulbValue, bulb) {
+    const valueOfBulb = document.createElement("p");
+    valueOfBulb.innerText = bulbValue;
+    bulb.appendChild(valueOfBulb);
+}
+
+function createBulb(value){
+    const bulb =  document.createElement("div");
+    bulb.classList.add("bulb");
+    let bulbValue = ""+Math.pow(2, value);
+    bulb.setAttribute("value", bulbValue);
+
+    createBulbSymbol(bulb);
+    createBulbButton(bulbValue, bulb);
+    createBulbValueText(bulbValue, bulb);
+
     gameArea.appendChild(bulb);
 }
 
