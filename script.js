@@ -3,6 +3,7 @@ const form = document.querySelector("#numberSelectionForm");
 
 function prepareGame(numberOfBulbs) {
     let generatedRandomNumberToConvert = generateRandomNumber(numberOfBulbs);
+    console.log(generatedRandomNumberToConvert);
     for (let i = numberOfBulbs - 1; i >= 0; i--) {
         createBulb();
     }
@@ -31,7 +32,7 @@ function startGame() {
 }
 
 function generateRandomNumber(numberOfBulbs) {
-    return Math.floor(Math.random() * numberOfBulbs);
+    return Math.floor(Math.random() * Math.pow(2, numberOfBulbs - 1) + 1);
 }
 
 function createBulb(){
