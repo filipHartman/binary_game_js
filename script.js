@@ -20,8 +20,7 @@ function createPanelWithGeneratedNumber(generatedNumber) {
 }
 
 function changeColorOfBulb() {
-   this.parentNode.classList.toggle("clicked");
-
+    this.parentNode.firstChild.classList.toggle("clicked")
 }
 
 function getNumbersOfBulbsFromForm() {
@@ -45,8 +44,11 @@ function generateRandomNumber(numberOfBulbs) {
     return Math.floor(Math.random() * Math.pow(2, numberOfBulbs - 1) + 1);
 }
 
-function createBulb(value){
+function createBulb(){
     const bulb =  document.createElement("div");
+    const iTag = document.createElement("i");
+    iTag.classList.add("far", "fa-lightbulb");
+    bulb.appendChild(iTag);
     bulb.classList.add("bulb");
     bulb.setAttribute("value", ""+Math.pow(2, value));
     const btn = createButton();
