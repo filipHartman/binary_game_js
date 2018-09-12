@@ -44,7 +44,7 @@ function generateRandomNumber(numberOfBulbs) {
     return Math.floor(Math.random() * Math.pow(2, numberOfBulbs - 1) + 1);
 }
 
-function createBulb(){
+function createBulb(value){
     const bulb =  document.createElement("div");
     const iTag = document.createElement("i");
     iTag.classList.add("far", "fa-lightbulb");
