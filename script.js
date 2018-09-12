@@ -8,9 +8,8 @@ function prepareGame(numberOfBulbs) {
     }
 }
 
-
 function changeColorOfBulb() {
-    this.parentNode.firstChild.classList.toggle("clicked")
+    this.parentNode.firstChild.classList.toggle("alight")
 }
 
 function getNumbersOfBulbsFromForm() {
@@ -26,7 +25,6 @@ function getNumbersOfBulbsFromForm() {
 function startGame() {
    let numberOfBulbs = getNumbersOfBulbsFromForm();
     document.getElementById("startGamePanel").style.display = 'none';
-
     prepareGame(numberOfBulbs);
 }
 
@@ -40,7 +38,6 @@ function createBulb(){
     bulb.appendChild(btn);
     gameArea.appendChild(bulb);
 }
-
 
 function createButton(){
     const button = document.createElement("div");
